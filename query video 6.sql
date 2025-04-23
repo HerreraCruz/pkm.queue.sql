@@ -17,3 +17,7 @@ SELECT 1 AS completed;
 
 
 SELECT * FROM pokequeue.requests
+
+SELECT * FROM pokequeue.status
+
+SELECT * FROM pokequeue.MESSAGES
