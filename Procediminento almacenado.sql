@@ -1,5 +1,6 @@
 ALTER PROCEDURE pokequeue.create_poke_request(
     @type NVARCHAR(255)
+    , @sample_size INT = NULL
 )
 AS
 
@@ -9,13 +10,19 @@ INSERT INTO pokequeue.requests(
     [type]
     , [url]
     , id_status
+    , sample_size
 ) VALUES (
     @type
     , ''
     , (SELECT id FROM pokequeue.status WHERE description = 'sent')
+    , @sample_size
 )
 
-SELECT MAX(id) as id FROM pokequeue.requests;
+DECLARE @InsertedId INT = SCOPE_IDENTITY();
+
+    SELECT id, sample_size 
+    FROM pokequeue.requests 
+    WHERE id = @InsertedId;
 
 
 

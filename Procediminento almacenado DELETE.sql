@@ -13,3 +13,5 @@ END;
 
 
 EXEC pokequeue.delete_poke_request '29';
+
+SELECT * FROM pokequeue.requests;
